@@ -1,0 +1,25 @@
+.animation {
+    animation: animation 10s ;
+    position: fixed;
+    top: -200vw;
+    left: 0 ;
+    height: 100vh;
+     width: 100vw;
+      z-index: 1000000;
+      background: #0000009f;
+}
+.sliderWhatsapp {
+    right: 10px;
+    bottom: 10px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10000;
+  }
+@keyframes animation {
+    0% {top: -200vw}
+    20% {top: 0}
+    80% {top: 0}
+    100% {top: -200vw}
+}

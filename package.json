@@ -1,0 +1,47 @@
+{
+  "name": "periodico-digital",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^5.8.3",
+    "@mantine/hooks": "^5.8.3",
+    "@mantine/tiptap": "^5.8.3",
+    "@tabler/icons": "^1.113.0",
+    "@tiptap/extension-link": "^2.0.0-beta.202",
+    "@tiptap/react": "^2.0.0-beta.202",
+    "@tiptap/starter-kit": "^2.0.0-beta.202",
+    "@vtfk/pdf-splitter": "^1.1.1",
+    "browser-image-compression": "^2.0.0",
+    "firebase": "^9.13.0",
+    "html-react-parser": "^3.0.4",
+    "moment": "^2.29.4",
+    "next": "^13.5.6",
+    "next-pwa": "^5.6.0",
+    "react": "18.2.0",
+    "react-clock": "^4.0.0",
+    "react-dom": "18.2.0",
+    "react-hook-speech-to-text": "^0.8.0",
+    "react-pageflip": "^2.0.3",
+    "react-player": "^2.11.0",
+    "react-quill": "^2.0.0",
+    "react-slideshow-image": "^4.0.5",
+    "react-speech-kit": "^3.0.1",
+    "react-use-audio-player": "^2.2.0",
+    "react-voice-components": "^1.0.0",
+    "speak-tts": "^2.0.8",
+    "tts-react": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}

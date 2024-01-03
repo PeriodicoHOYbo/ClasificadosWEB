@@ -1,0 +1,272 @@
+.container {
+  width: 100%;
+  color: white;
+  background: #00404a;
+  border-bottom: 2.5px solid brown;
+  font-size: 10px;
+  /* margin-bottom: 5px; */
+  position: sticky;
+  top: 0px;
+  z-index: 1000000;
+}
+
+.nav {
+  font-size: 14px;
+  padding: 2px 0;
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 5px solid #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000000;
+}
+
+
+.nav .link {
+    display: inline-block;
+    padding: 0px 10px;
+    margin: 2px 2px;
+    background: linear-gradient(to right, #00404a, rgb(0, 116, 131), rgb(0, 116, 131), #007483, #007483, #007483, #007483, #00404a);
+  }
+
+
+.socialMediaSpan {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  top: -5px;
+  width: 100%;
+  height: 2.5vw;
+  /* background-color: rgba(255, 0, 0, 0.393); */
+  padding-left: 5px;
+}
+
+.socialMedia {
+  position: relative;
+  padding-bottom: 5px;
+  color: black;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: sticky;
+  top: 64px;
+  width: 100%;
+  height: 2.5vw;
+  padding-left: 0px;
+  z-index: 1000;
+}
+
+.socialMediaIcons {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  background-color: transparent;
+  height: 2.5vw;
+  padding: .3vw;
+
+}
+
+.socialMediaIcons img {
+  height: 2.1vw;
+  width: auto;
+  margin: auto 2px;
+}
+
+.containerSocialMediaIcons {
+  position: absolute;
+  top: 55px;
+}
+
+.containerSocialMediaIcons > :nth-child(n) {
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
+
+.containerLogout {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to right, #00353d,#00353d, #007483,#00353d, #00353d)  ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 5px solid white;
+}
+
+@media (max-width: 1095px) {
+
+  .socialMediaSpan {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .socialMedia {
+    top: 90px;
+    height: 2.5vw;
+  }
+
+  .containerSocialMediaIcons {
+    top: 43px;
+  }
+  
+  .nav img:nth-child(n) {
+    display: inline-block;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    background: radial-gradient(#00404a, #007483, );
+  }
+  .socialMediaIcons {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 1;
+    background-color: none;
+    height: 2.5vw;
+    padding: .3vw;
+  }
+
+  .socialMediaIcons img {
+    height: 2.1vw;
+    width: auto;
+    margin: auto 2px;
+  }
+}
+
+
+@media (max-width: 765px) {
+  .nav {
+    font-size: 12px;
+  }
+  
+  .socialMedia {
+    top: 84px;
+    justify-content: flex-end;
+  }
+
+}
+
+/* @media (max-width: 735px) {
+  .nav {
+    font-size: 12px;
+  }
+  
+  .socialMediaSpan {
+    color: transparent;
+  }
+
+  .socialMediaSpan {
+    font-size: 8px;
+    font-weight: bold;
+
+  }
+
+  .socialMedia {
+    top: 70px;
+    justify-content: flex-end;
+  }
+  .nav :nth-child(n) {
+    padding: 0px 10px;
+  }
+  .socialMediaIcons {
+    top: -22px;
+  }
+
+  .socialMediaIcons img {
+    height: 3.5vw;
+    padding-bottom: 1.3vw;
+  }
+} */
+
+
+
+
+@media (max-width: 748px) {
+
+  .socialMediaSpan {
+    display: none;
+  }
+
+  .socialMedia {
+    top: 55px;
+    height: 5vw;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .containerSocialMediaIcons {
+    top: 65px;
+  }
+
+  .containerSocialMediaIcons> :nth-child(n) {
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+
+  }
+
+  .socialMediaIcons {    
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 1;
+    background-color: none;
+    height: auto;
+    padding: 0;
+
+  }
+
+  .socialMediaIcons img {
+    height: 3.5vw;
+    padding-bottom: 0vw;
+  }
+}
+
+@media (max-width: 690px) {
+
+  .socialMedia {
+    top: 77px;
+  }
+  .containerSocialMediaIcons {
+    top: 77px;
+  }
+}
+@media (max-width: 481px) {
+
+  .socialMedia {
+    top: 100px;
+  }
+  .containerSocialMediaIcons {
+    top: 80px;
+  }
+}
+
+@media (max-width: 375px) {
+
+  .socialMedia {
+    top: 125px;
+  }
+  .containerSocialMediaIcons {
+    top: 80px;
+  }
+  .socialMediaIcons img {
+  
+    padding-bottom: 1vw;
+  }
+}

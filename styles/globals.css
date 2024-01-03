@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+  font-size: 15px;
+  background-color: black;
+
+  box-shadow: 0px 0px 10px 2px #007484 inset;
+}
+img {
+    display: inline-block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: wrap;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+span {
+  font-size: 10px;
+}
+
+input {
+  background-color: white;
+  color: black;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: black;
+    color: black;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* Designing for scroll-bar */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    z-index: 100000000000000000000000;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    z-index: 100000000000000000000000;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #a8a8a8;
+    border-radius: 5px;
+    z-index: 100000000000000000000000;
+}
+}

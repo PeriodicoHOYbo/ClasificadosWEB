@@ -1,0 +1,102 @@
+.container {
+  position: relative;
+  width: 100%;
+  color: white;
+  font-size: 10px;
+  z-index: 1000;
+}
+
+.nav {
+  font-size: 14px;
+  padding: 2px 0;
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 5px solid #ffffff;
+  position: relative;
+  background: #00404a;
+  z-index: 1000;
+}
+
+
+.nav .link {
+    display: inline-block;
+    padding: 0px 15px;
+    margin: 2px 2px;
+    background: linear-gradient(to right, #00404a, rgb(0, 116, 131), rgb(0, 116, 131), #007483, #007483, #007483, #007483, #00404a);
+  }
+
+
+.socialMediaSpan {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  top: -5px;
+  width: 100%;
+  height: 2.5vw;
+  /* background-color: rgba(255, 0, 0, 0.393); */
+  padding-left: 5px;
+}
+
+.socialMedia {
+  position: relative;
+  padding-bottom: 5px;
+  color: black;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 2.5vw;
+  padding-left: 0px;
+  z-index: 1000;
+}
+
+.socialMediaIcons {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  background-color: transparent;
+  height: 2.5vw;
+  padding: .3vw;
+
+}
+
+.socialMediaIcons img {
+  height: 25px;
+  width: auto;
+  margin: auto 2px;
+}
+
+.containerSocialMediaIcons {
+  position: relative;
+  border-top: 2.5px solid brown;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.containerSocialMediaIcons > :nth-child(n) {
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
+
+
+
+
+@media (max-width: 765px) {
+  .nav {
+    font-size: 12px;
+  }
+}
