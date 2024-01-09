@@ -40,6 +40,7 @@ export default function Form({ topic, value, color }) {
       setUrlPostImage(URL.createObjectURL(file))
     }
   }
+
   function manageTemplate(e) {
     //const monthYear = monthAndYear ? monthAndYear : getMonthAndYear()
     const ruteDB = `/${topic}/Templates` // /Inicio
@@ -54,6 +55,15 @@ export default function Form({ topic, value, color }) {
     const value = e.target.value
     const object = { [name]: value }
     setData({ ...data, ...object })
+  }
+  function handlerEventChange2(e) {
+    e.preventDefault()
+    console.log(e)
+    const name = e.target.name
+    const value = e.target[0].value
+
+    const object = { [new Date().getTime()]: value }
+    setFileList([...fileList.filter(i => typeof i === 'string'), value])
   }
   function handlerChecked() {
     setIsChecked(!isChecked)
@@ -106,7 +116,6 @@ export default function Form({ topic, value, color }) {
       default:
         return setUserSuccess(false)
     }
-
   }
 
   function save(num) {
@@ -115,21 +124,24 @@ export default function Form({ topic, value, color }) {
     const monthYear = monthAndYear ? monthAndYear : getMonthAndYear()
     const newDate = new Date()
 
-    if (postImage) {
+    if (fileList.length > 0) {
       const ruteDB = `/${topic}/Posts` // Nov-2022/Inicio
       const ruteSTG = `${topic}` // Nov-2022/
       const fileName = `PostImage_${newDate.getTime()}` // PostImage_Tue Nov 15 2022 
-      const object = { [fileName]: { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '' } }
+      const object = {
+        [fileName]: typeof fileList[0] === 'string'
+          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '', images: fileList.map(i=>{return {url: i}})}
+          : { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '' }
+      }
+
       setUserSuccess('Cargando')
       writeUserData(ruteDB, object, setUserSuccess, setUserData)
-      uploadIMG(`${ruteDB}/${fileName}/images`, ruteSTG, '', fileList, setUserSuccess, null, false, true)
+      typeof fileList[0] !== 'string' && uploadIMG(`${ruteDB}/${fileName}/images`, ruteSTG, '', fileList, setUserSuccess, null, false, true)
 
       // uploadIMG(ruteDB, ruteSTG, fileName, postImage, setUserSuccess, monthYear, isCheckedComp)
       isChecked && writeUserData(`/Inicio/Posts`, object, setUserSuccess, setUserData)
       // isChecked && uploadIMG(`/Inicio/Posts`, 'Inicio', fileName, postImage, setUserSuccess, monthYear, isCheckedComp)
-      isChecked && uploadIMG(`${ruteDB}/${fileName}/images`, ruteSTG, '', fileList, setUserSuccess, null, false, true)
-
-
+      isChecked && typeof fileList[0] !== 'string' && uploadIMG(`${ruteDB}/${fileName}/images`, ruteSTG, '', fileList, setUserSuccess, null, false, true)
     } else {
       setUserSuccess("CompleteIMG")
     }
@@ -139,6 +151,10 @@ export default function Form({ topic, value, color }) {
     const arr = [...fileList]
     arr.splice(index, 1)
     setFileList(arr)
+  }
+  function formSubmit(e) {
+    e.preventDefault()
+    console.log(e.target)
   }
   return (
     <div className={style.form}>
@@ -169,14 +185,40 @@ export default function Form({ topic, value, color }) {
                 return <li className="pb-3 sm:pb-4 w-full list-none" key={index}>
                   <div className="flex items-center space-x-4 rtl:space-x-reverse">
                     <div className="flex-shrink-0">
-                      <img className="w-8 h-8 rounded-[5px]" src={URL.createObjectURL(i)} alt="Neil image" />
+                      <img
+                        className="w-8 h-8 rounded-[5px]"
+                        src={typeof i === 'string' ? i : URL.createObjectURL(i)} alt="Neil image" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        {i.name}
+                        {i.name ? i.name : `Imagen ${index + 1}`}
                       </p>
                       <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {bytesToMegaBytes(i.size).toFixed(2)} MB
+                        {bytesToMegaBytes(i.size).toFixed(2) !== 'NaN' ? `${bytesToMegaBytes(i.size).toFixed(2)} MB` : 'Cargado por URL'}
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                      <svg className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48" onClick={() => handlerItem(index)}>
+                        <path fill="#f44336" d="M44,24c0,11-9,20-20,20S4,35,4,24S13,4,24,4S44,13,44,24z"></path><line x1="16.9" x2="31.1" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line><line x1="31.1" x2="16.9" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line>
+                      </svg>
+                    </div>
+                  </div>
+                </li>
+              })
+            }
+            {
+              data.images !== undefined && data.images.length > 0 && data.images.map((i, index) => {
+                return <li className="pb-3 sm:pb-4 w-full list-none" key={index}>
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="flex-shrink-0">
+                      <img className="w-8 h-8 rounded-[5px]" src={i} alt="Neil image" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        Imagen {index + 1}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        Cargado desde URL
                       </p>
                     </div>
                     <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
@@ -196,9 +238,13 @@ export default function Form({ topic, value, color }) {
 
 
 
-          <div className={`min-h-[450px]  relative flex flex-col justify-center items-center bg-[#00404a]`}>
-            <h3 className='text-white pb-[20px]'> Edición Dígital</h3>
-            <form className={`bg-white rounded-[20px] p-5 space-y-5 ${style.formSelectPost}`}>
+          <div className={`min-h-[450px]  relative flex flex-col justify-center items-center bg-[#00404a] p-5 lg:p-10`}>
+            <h3 className='text-white pb-[20px]'>Subir clasificados</h3>
+            <form className='relative  w-full flex mb-2 ' onSubmit={handlerEventChange2}>
+              <input type="text" className='w-full border-b-[1px] border-gray-500 rounded-[5px] mr-2 text-[12px]' placeholder='Urls' name="images" />
+              <button className='block w-[50px] relative cursor-pointer  rounded-bl-[5px] rounded-tr-[5px] transition-all p-[2px] text-[white] text-[12px] bg-[brown] border-[2px] border-[brown]'>add</button>
+            </form>
+            <form className={`w-full bg-white rounded-[20px] p-5 space-y-5 ${style.formSelectPost}`} onSubmit={formSubmit}>
               <label htmlFor={`${topic}-Post`} className='block relative cursor-pointer min-w-[140px] rounded-[20px] transition-all w-full p-[2px] text-[white] text-[12px] bg-[brown] border-[2px] border-[brown]' >Añadir publicación </label>
               {/* <div className={style.counterBox}>
                 <div>
@@ -211,6 +257,8 @@ export default function Form({ topic, value, color }) {
               <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='Titular' name="descriptionPost" onChange={handlerEventChange} maxLength={isCheckedLength ? 65 : ''} />
               {/* <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='Enlace' name="enlacePost" onChange={handlerEventChange} /> */}
               <input type="text" className='w-full border-b-[1px] border-gray-500' placeholder='WhatsApp' name="whatsapp" onChange={handlerEventChange} />
+
+
               <div className='w-full flex justify-between text-[12px]'>
                 <input type="checkbox" onClick={handlerCheckedLength} checked={isCheckedLength} onChange={handlerEventChange} /> Max65
                 {/* <input type="radio" value="left" name="objectPositionPost" onChange={handlerEventChange} /> ⇦
@@ -221,7 +269,7 @@ export default function Form({ topic, value, color }) {
                 <input type="checkbox" onClick={handlerChecked} checked={isChecked} /> Init
                 <input type="checkbox" onClick={handlerCheckedComp} checked={isCheckedComp} /> Comp
               </div>
-              <Button style="buttonMiniSecondary" click={validator}>Guardar</Button>
+              {fileList.length > 0 ? <Button style="buttonMiniSecondary" click={validator}>Guardar</Button> : <Button style="buttonMiniDisable" click={validator}>Guardar</Button>}
             </form>
           </div>
 

@@ -64,7 +64,7 @@ function TemplateFour({ color, topic, grid }) {
                 ${grid === 'TemplateSix' && styles.gridSix}
                 ${grid === 'TemplateSeven' && styles.gridSeven}
                 ${grid === 'TemplateEight' && styles.gridEight}
-                ${grid == null && styles.gridThreeB} 
+                ${grid == null && styles.gridEight} 
                 ${elements == true || styles.allVisible}`}
                 >
 
@@ -78,7 +78,7 @@ function TemplateFour({ color, topic, grid }) {
                                 <Link href={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] ? userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] : ''} legacyBehavior>
                                     <a target={userDB[topic]["Posts"][`PostImage_${i}`]['enlace'] && userDB[topic]["Posts"][`PostImage_${i}`]['enlace'].includes('http') ? '_blanck' : ''}>
 
-                                        {userDB[topic].Posts[`PostImage_${i}`].images !== undefined && <Slide transitionDuration={8000} duration={10} scale={1}{...properties} indicators={true} easing='cubic' autoplay={true}>
+                                        {userDB[topic].Posts[`PostImage_${i}`].images !== undefined && <Slide transitionDuration={8000} duration={10} scale={1}{...properties} indicators={true} easing='cubic' autoplay={false}>
                                             {
                                                 userDB[topic].Posts[`PostImage_${i}`].images.map((i, index) =>
                                                     <div className="each-slide" key={index} >

@@ -66,5 +66,20 @@
 .buttonMiniSecondary:hover {
     color: brown;
     background-color: #ffffff;
-    border: 2px solid brown;
+    border: 2px solid rgb(0, 0, 0);
+}
+.buttonMiniDisable {
+    width: 100%;
+    padding: 2px;
+    color: #000000;
+    font-size: 12px;
+    background-color: #f1f1f1;
+    border: 2px solid #ffffff; 
+    box-shadow: 0 0 5px #7e7e7e  ;  
+}
+.buttonMiniDisable:hover {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 5px #7e7e7e ;
 }

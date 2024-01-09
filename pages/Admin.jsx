@@ -74,6 +74,7 @@ function Admin() {
   // userDB['Inmobiliria'].Posts[i].fecha && writeUserData(rute,{fecha: new Date(userDB['Inmobiliria'].Posts[i].fecha).getTime()})
   //   })
 
+  console.log(userDB)
 
   useEffect(() => {
 

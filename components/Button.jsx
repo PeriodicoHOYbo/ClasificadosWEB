@@ -207,7 +207,6 @@ export default function Button({ theme, click, children, style, type }) {
             >
                 {children}
             </button>
-
         case 'MiniSuccess':
             return <button
                 type={type ? type : 'submit'}
@@ -243,7 +242,12 @@ export default function Button({ theme, click, children, style, type }) {
                 onClick={click}>
                 {children}
             </button>
-
+        case 'buttonMiniDisable':
+            return <button
+                className={`block relative cursor-pointer min-w-[140px] rounded-[20px] transition-all w-full p-[2px] text-[white] text-[12px] bg-gray-300 border-[2px] border-[brown]`}
+                onClick={click}>
+                {children}
+            </button>
         default:
             return <button
                 className={` ${styles.button} ${styles[style]}`}
