@@ -226,12 +226,12 @@ function TemplateOne() {
     <main className={`${styles.main}`}>
 
       {
-        formViewer === true && <div className={`min-h-screen ${styles.viewer}`}>
-                      <h2 className={`p-5 ${styles.title}`}>{description}</h2>
+        formViewer === true && <div className={`min-h-screen bg-black ${styles.viewer}`}>
+                      <h2 className={`p-5 ${styles.title} text-center`}>{description}</h2>
 
 
           <div className={`${styles.containerButtonsPlayer} flex w-full justify-center`}>
-            {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
+            {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' &&<SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
               return acc + result.props.children
             }, '').replaceAll('[object Object]').replaceAll('undefined')} />}
           </div>
@@ -250,7 +250,6 @@ function TemplateOne() {
                           <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
                         </Link>
                       }
-
                     </div>
                   )}
               </Slide>
@@ -288,7 +287,7 @@ function TemplateOne() {
       {/* editor */}
 
 
-      {user && formViewer === false && <div className={`p-5 min-h-screen ${styles.viewer}`}>
+      {user && formViewer === false && <div className={`p-5 min-h-screen bg-slate-100 ${styles.viewer}`}>
         <div className='flex w-full'>
           <label htmlFor="Title" className='w-[100px]' >Titulo</label>
           <input type="text" id="Title" name="description" className='block w-full p-1 rounded-[5px] mx-[5px] outline-none border-[1px] border-gray-500' onChange={handlerOnChange} defaultValue={description} />
@@ -302,12 +301,7 @@ function TemplateOne() {
         <h2 className={styles.title}>{description}</h2>
         <p className={styles.description}>{title}</p>
 
-        <div className={styles.containerIMGCenter}>
-          <div className={styles.containerIMG}>
-            <img src={userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].url} className={styles.image} alt="" />
-            <span className={styles.copyrightIMG}>{copyrightIMG}</span>
-          </div>
-        </div>
+     
         <SpeechToText setValue={setTextEditor} value={textEditor ? textEditor : 'nada'} />
         <br />
         <div className={styles.editor}  >
