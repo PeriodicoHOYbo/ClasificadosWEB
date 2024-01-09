@@ -130,8 +130,8 @@ export default function Form({ topic, value, color }) {
       const fileName = `PostImage_${newDate.getTime()}` // PostImage_Tue Nov 15 2022 
       const object = {
         [fileName]: typeof fileList[0] === 'string'
-          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '', images: fileList.map(i=>{return {url: i}})}
-          : { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', nota: '' }
+          ? { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center', images: fileList.map(i=>{return {url: i}})}
+          : { fecha: newDate.getTime(), description: data.descriptionPost ? data.descriptionPost : '', enlace: data.enlacePost ? data.enlacePost : `${num}${newDate.getTime()}`, objectFit: data.objectPositionPost ? data.objectPositionPost : 'center' }
       }
 
       setUserSuccess('Cargando')

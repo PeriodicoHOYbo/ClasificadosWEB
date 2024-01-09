@@ -26,8 +26,6 @@ import Temporizador from '../components/Temporizador'
 import { useGlobalAudioPlayer } from 'react-use-audio-player';
 import { Slide } from 'react-slideshow-image'
 
-// import { useSpeechSynthesis } from 'react-speech-kit';
-// import {SpeechSynthesis} from '../components/SpeechSynthesis'
 const SpeechSynthesis = dynamic(() => import("../components/SpeechSynthesis"), {
   ssr: false,
 });
@@ -102,7 +100,7 @@ function TemplateOne() {
   }
 
   function redirect(ruta, self) {
-    ruta != '#' ? window.open(ruta, self ? '_self' :'_blank') : ''
+    ruta != '#' ? window.open(ruta, self ? '_self' : '_blank') : ''
   }
 
   function validate() {
@@ -221,63 +219,67 @@ function TemplateOne() {
   // useEffect(() => {
   //   userDB && user === null && userDB[validate()] && userDB[validate()]['Modals'] && Object.values(userDB[validate()]['Modals']).length > 0 && setUserModalsInterval(5000)
   // }, [userDB]);
-
+  // console.log(specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined)
   return (
 
     specificData && router.query.temporal !== undefined &&
     <main className={`${styles.main}`}>
 
+      {
+        formViewer === true && <div className={`min-h-screen ${styles.viewer}`}>
+                      <h2 className={`p-5 ${styles.title}`}>{description}</h2>
 
 
-      {formViewer === true && <div className={`min-h-screen ${styles.viewer}`}>
-
-        <h2 className={`p-5 ${styles.title}`}>{description}</h2>
-
-        <div className={`${styles.containerButtonsPlayer} flex w-full justify-center`}>
-          {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
-            return acc + result.props.children
-          }, '').replaceAll('[object Object]').replaceAll('undefined')} />}
-        </div>
-
-
-
-        {userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images !== undefined &&
-          <Slide transitionDuration={50} duration={50} scale={1} indicators={true} easing='cubic' autoplay={false}>
-            {
-              userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images.map((i, index) =>
-                <div className="each-slide" key={index} >
-                  <img className='block relative w-screen  sm:h-screen object-contain cursor-zoom-in' src={i.url} onClick={()=>redirect(i.url, true)} />
-                  {
-                    userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
-                      <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
-                    </Link>
-                  }
-                </div>
-              )}
-          </Slide>}
-
-
-
-        {userDB && userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].state == 'Publicado' || user &&
-          <div className={`${styles.qlEditor} `} styles={{ padding: '0', height: '50%' }} >
-            <div className={styles.redactorData}>
-              <div className={styles.perfil}>
-                <img src={userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor !== undefined && userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor].url} className={styles.perfilIMG} alt="" />
-                {userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor] && <p>{userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor].name} <br /> Redactor</p>}
-              </div>
-              <span>
-                {days[new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getDay()]} {' de '}
-                {new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getDate()} {' de '}
-                {months[new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getMonth()]} {' de '}
-                {new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getFullYear()}</span>
-            </div>
+          <div className={`${styles.containerButtonsPlayer} flex w-full justify-center`}>
+            {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
+              return acc + result.props.children
+            }, '').replaceAll('[object Object]').replaceAll('undefined')} />}
           </div>
-        }
-        <br />
-        {user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
-          <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
-        </div>}
-      </div>}
+
+
+
+          {userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images !== undefined &&
+            <div className='relative'>
+              <Slide transitionDuration={50} duration={50} scale={1} indicators={true} easing='cubic' autoplay={false}>
+                {
+                  userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images.map((i, index) =>
+                    <div className="each-slide" key={index} >
+                      <img className='block relative w-screen  sm:h-screen object-contain cursor-zoom-in' src={i.url} onClick={() => redirect(i.url, true)} />
+                      {
+                        userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
+                          <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
+                        </Link>
+                      }
+
+                    </div>
+                  )}
+              </Slide>
+            </div>
+          }
+
+
+
+          {userDB && userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].state == 'Publicado' || user &&
+            <div className={`${styles.qlEditor} `} styles={{ padding: '0', height: '50%' }} >
+              <div className={styles.redactorData}>
+                <div className={styles.perfil}>
+                  <img src={userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor !== undefined && userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor].url} className={styles.perfilIMG} alt="" />
+                  {userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor] && <p>{userDB.users[userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].redactor].name} <br /> Redactor</p>}
+                </div>
+                <span>
+                  {days[new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getDay()]} {' de '}
+                  {new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getDate()} {' de '}
+                  {months[new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getMonth()]} {' de '}
+                  {new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getFullYear()}</span>
+              </div>
+            </div>
+          }
+          <br />
+          {user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
+            <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
+          </div>}
+        </div>
+      }
 
 
 

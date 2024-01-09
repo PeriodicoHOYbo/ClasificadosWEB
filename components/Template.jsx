@@ -66,7 +66,7 @@ function TemplateFour({ color, topic, grid }) {
                 ${grid === 'TemplateEight' && styles.gridEight}
                 ${grid == null && styles.gridEight} 
                 ${elements == true || styles.allVisible}`}
-                >
+            >
 
                 {userDB && dataForDate.length > 0 && dataForDate.map((i, index) =>
                     <>
@@ -82,12 +82,10 @@ function TemplateFour({ color, topic, grid }) {
                                             {
                                                 userDB[topic].Posts[`PostImage_${i}`].images.map((i, index) =>
                                                     <div className="each-slide" key={index} >
-                                                        {console.log(i)}
                                                         {
                                                             router.pathname == "/Admin"
-                                                                ?          <img className={styles.sliderIMG} src={i.url} />
-                                                                :        <img className={styles.sliderIMG} src={i.url} />
-                                                            
+                                                                ? <img className='object-cover h-full' src={i.url} />
+                                                                : <img className='object-cover h-full' src={i.url} />
                                                         }
                                                         {/* {
                                                             userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
@@ -117,8 +115,8 @@ function TemplateFour({ color, topic, grid }) {
                                                 userDB[topic].Posts[`PostImage_${i}`].images.map((i, index) =>
                                                     <div className="each-slide" key={index} >
                                                         {
-                                                                <img className={styles.sliderIMG} src={i.url} />
-                                                               
+                                                            <img className='object-cover h-full' src={i.url} />
+
                                                         }
                                                         {/* {
                                                             userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[`${routeDB}`][`BannerNotas${item}`][i].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
