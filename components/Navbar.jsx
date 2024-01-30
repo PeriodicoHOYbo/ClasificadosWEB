@@ -88,12 +88,7 @@ export default function Navbar() {
                     <Link href="#Empleos" legacyBehavior scroll={false}>
                         <a className={`uppercase ${style.link} ${pathname == "#Empleos" ? style.active : ''}`} onClick={handlerClick}>Empleos</a>
                     </Link>
-                    <Link href="#" legacyBehavior scroll={false}>
-                        <a className={`uppercase ${style.link} ${pathname == "#Imagenes" ? style.active : ''}`} onClick={handleClick}>IMÁGENES</a>
-                    </Link>
-                    <Link href="#" legacyBehavior scroll={false}>
-                        <a className={`uppercase ${style.link} ${pathname == "#Videos" ? style.active : ''}`} onClick={handleClickYT}>VIDEOS</a>
-                    </Link>
+                   
                     <Link href="#Nosotros" legacyBehavior scroll={false}>
                         <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} >NOSOTROS</a>
                     </Link>
