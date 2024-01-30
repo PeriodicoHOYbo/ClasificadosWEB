@@ -28,7 +28,7 @@ function MyBook(props) {
                 <HTMLFlipBook
                     // width={navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 780 ? window.screen.width - 50 : window.screen.width - 300}
                     width={screen.width}
-                    height={screen.width * 1.045}
+                    height={screen.height}
                     // size={'stretch'}
                     maxShadowOpacity={0.5}
                     showCover={false}
@@ -38,7 +38,7 @@ function MyBook(props) {
                 >
                     {/* {Object.values(userDB.EdicionDigital[ router.query.edicion]).map((i, index) => <img src={`${i.url}`} key={index} />)} */}
                     {Object.values(userDB.EdicionDigital[router.query.edicion]).map((i, index) => {
-                        return <div className='relative w-[80vw] flex justify-center' key={index}>
+                        return <div className='relative w-[80vw]  flex justify-center' key={index}>
                          <img className='inline-block absolute px-[10px] w-full h-full object-contain object-center' src={`${i.url}`}  />
 </div>
 

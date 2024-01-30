@@ -55,14 +55,14 @@
   position: fixed;
   top: 70px;
   max-width: 100%;
-  color: #000000;
+  color: #ffffff;
   overflow: hidden;
   font-weight: bold;
   line-height: 40px;
   margin: 0;
-  -webkit-text-fill-color: #000000;
-  -webkit-text-stroke-width: .5px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
+  -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
 }
 .titleKEY {
   position: fixed;
@@ -74,9 +74,9 @@
   font-weight: bold;
   line-height: 40px;
   margin: 0;
-  -webkit-text-fill-color: #000000;
-  -webkit-text-stroke-width: .5px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
+  -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
   animation-name: titleKEY;
   animation-duration: 15s;
   animation-delay: 3s;
@@ -130,9 +130,9 @@
     font-weight: bold;
     line-height: 40px;
     margin: 0;
-    -webkit-text-fill-color: #000000;
-    -webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: rgb(255, 255, 255);
+    -webkit-text-fill-color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
     animation-name: titleKEY;
     animation-duration: 15s;
     animation-delay: 3s;
