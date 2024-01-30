@@ -6,6 +6,7 @@ import style from '../styles/Navbar.module.css'
 
 export default function Navbar() {
     const { pathname } = useRouter()
+    const router = useRouter()
 
     const { setUserShowImg, showImg, setUserShowVideo, showVideo } = useUser()
     function handleClick() {
