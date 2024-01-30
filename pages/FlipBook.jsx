@@ -38,8 +38,8 @@ function MyBook(props) {
                 >
                     {/* {Object.values(userDB.EdicionDigital[ router.query.edicion]).map((i, index) => <img src={`${i.url}`} key={index} />)} */}
                     {Object.values(userDB.EdicionDigital[router.query.edicion]).map((i, index) => {
-                        return <div className='relative w-[80vw] flex justify-center'>
-                         <img className='inline-block absolute px-[10px] w-full h-full object-contain object-center' src={`${i.url}`} key={index} />
+                        return <div className='relative w-[80vw] flex justify-center' key={index}>
+                         <img className='inline-block absolute px-[10px] w-full h-full object-contain object-center' src={`${i.url}`}  />
 </div>
 
                     })}

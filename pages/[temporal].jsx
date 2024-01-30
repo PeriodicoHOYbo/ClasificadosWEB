@@ -281,7 +281,7 @@ function TemplateOne() {
               </div>
             </div>
           }
-          <div className='flex w-[50vw] justify-between'>
+          <div className='fixed bottom-[50px] left-0 right-0 mx-autoflex w-[50vw] justify-between'>
              <img src="/velas.gif" className='w-[50px]' alt="" />
              <img src="/velas.gif" className='w-[50px]' alt="" />
           </div>
