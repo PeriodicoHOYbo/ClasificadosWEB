@@ -55,14 +55,13 @@
   position: fixed;
   top: 70px;
   max-width: 100%;
-  color: #007483;
-  font-size: 40px;
+  color: #000000;
   overflow: hidden;
   font-weight: bold;
   line-height: 40px;
   margin: 0;
-  -webkit-text-fill-color: #007483;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: #000000;
+  -webkit-text-stroke-width: .5px;
   -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 .titleKEY {
@@ -70,14 +69,13 @@
   top: 70px;
   left: -80vw;
   max-width: 100%;
-  color: #007483;
-  font-size: 40px;
+  color: #000000;
   overflow: hidden;
   font-weight: bold;
   line-height: 40px;
   margin: 0;
-  -webkit-text-fill-color: #007483;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: #000000;
+  -webkit-text-stroke-width: .5px;
   -webkit-text-stroke-color: rgb(255, 255, 255);
   animation-name: titleKEY;
   animation-duration: 15s;
@@ -89,7 +87,7 @@
   right: -80vw;
   animation-name:  playerKEY;
   animation-duration: 15s;
-  animation-delay: 3s;
+  animation-delay: 1s;
   animation-iteration-count: 1;
 }
 
@@ -128,14 +126,12 @@
     top: 70px;
     left: -47vw;
     max-width: 100%;
-    color: #007483;
-    font-size: 40px;
     overflow: hidden;
     font-weight: bold;
     line-height: 40px;
     margin: 0;
-    -webkit-text-fill-color: #007483;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke-width: .5px;
     -webkit-text-stroke-color: rgb(255, 255, 255);
     animation-name: titleKEY;
     animation-duration: 15s;
@@ -147,7 +143,7 @@
     right: -47vw;
     animation-name:  playerKEY;
     animation-duration: 15s;
-    animation-delay: 3s;
+    animation-delay: 1s;
     animation-iteration-count: 1;
   }
   
