@@ -281,6 +281,11 @@ function TemplateOne() {
               </div>
             </div>
           }
+          <div className='flex w-[50vw] justify-between'>
+             <img src="/velas.gif" className='w-[50px]' alt="" />
+             <img src="/velas.gif" className='w-[50px]' alt="" />
+          </div>
+         
           {user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
             <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
           </div>}
