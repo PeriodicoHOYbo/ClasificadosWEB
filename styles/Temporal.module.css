@@ -52,14 +52,140 @@
 
 
 .title {
-  position: relative;
+  position: fixed;
+  top: 70px;
   max-width: 100%;
   color: #007483;
   font-size: 40px;
   overflow: hidden;
+  font-weight: bold;
   line-height: 40px;
   margin: 0;
+  -webkit-text-fill-color: #007483;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
 }
+.titleKEY {
+  position: fixed;
+  top: 70px;
+  left: -80vw;
+  max-width: 100%;
+  color: #007483;
+  font-size: 40px;
+  overflow: hidden;
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0;
+  -webkit-text-fill-color: #007483;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  animation-name: titleKEY;
+  animation-duration: 15s;
+  animation-delay: 3s;
+  animation-iteration-count: 1;
+}
+.containerButtonsPlayer {
+  position: fixed;
+  right: -80vw;
+  animation-name:  playerKEY;
+  animation-duration: 15s;
+  animation-delay: 3s;
+  animation-iteration-count: 1;
+}
+
+
+@keyframes titleKEY {
+  30% {
+    left: -80vw;
+  }
+  35% {
+    left: 0px
+  }
+  65% {
+    left: 0px
+  }
+  70% {
+    left: -80vw;
+  }
+}
+@keyframes playerKEY {
+  30% {
+    right: -80vw;
+  }
+  35% {
+    right: 0px
+  }
+  65% {
+    right: 0px
+  }
+  70% {
+    right:  -80vw;
+  }
+}
+@media (min-width: 850px) and (orientation: landscape) {
+  .titleKEY {
+    position: fixed;
+    top: 70px;
+    left: -47vw;
+    max-width: 100%;
+    color: #007483;
+    font-size: 40px;
+    overflow: hidden;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 0;
+    -webkit-text-fill-color: #007483;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+    animation-name: titleKEY;
+    animation-duration: 15s;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+  }
+  .containerButtonsPlayer {
+    position: fixed;
+    right: -47vw;
+    animation-name:  playerKEY;
+    animation-duration: 15s;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes titleKEY {
+    30% {
+      left: -47vw;
+    }
+    35% {
+      left: 0px
+    }
+    65% {
+      left: 0px
+    }
+    70% {
+      left: -47vw;
+    }
+  }
+  @keyframes playerKEY {
+    30% {
+      right: -47vw;
+    }
+    35% {
+      right: 0px
+    }
+    65% {
+      right: 0px
+    }
+    70% {
+      right:  -47vw;
+    }
+  }
+}
+
+
+
+
+
+
 
 .description {
   color: black;

@@ -63,6 +63,8 @@ function TemplateOne() {
   const [title, setTitle] = useState(null)
   const [description, setDescription] = useState(null)
   const [copyrightIMG, setCopyrightIMG] = useState(null)
+  const [removeKEY1, setRemoveKEY1] = useState(false)
+  const [removeKEY2, setRemoveKEY2] = useState(false)
 
   const [textEditor, setTextEditor] = useState("")
 
@@ -223,15 +225,21 @@ function TemplateOne() {
   return (
 
     specificData && router.query.temporal !== undefined &&
-    <main className={`${styles.main}`}>
+    <main className={`${styles.main} `}>
 
       {
-        formViewer === true && <div className={`min-h-screen bg-black ${styles.viewer}`}>
-                      <h2 className={`p-5 ${styles.title} text-center`}>{description}</h2>
+        formViewer === true && <div className={`relative h-screen bg-black ${styles.viewer}`}>
+          {/* <h2 className={`p-5 sm:w-[50vw] absolute left-0 right-0 mx-auto ${styles.title} text-center bg-white rounded-[20px] shadow-2xl z-50`}>{description}</h2> */}
+          <h2 
+          className={`p-5 sm:w-[50vw] fixed top-[70px] left-0 text-[#007483] text-[40px]  overflow-hidden m-0 text-center  rounded-[20px] shadow-2xl z-50 transition-all ${styles.title} ${removeKEY1 === false && styles.titleKEY}`}>
+            {description}
+            <span className='absolute right-5 font-bold text-[#007483] text-[16px]' onClick={()=>setRemoveKEY1(!removeKEY1)}> { removeKEY1 === true ? '<<':'>>'} </span>
+          </h2>
 
 
-          <div className={`${styles.containerButtonsPlayer} flex w-full justify-center`}>
-            {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' &&<SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
+          <div className={`${removeKEY2 === false && styles.containerButtonsPlayer} fixed w-full transition-all right-0 flex sm:w-[50vw] justify-center   sm:justify-start  z-50`}>
+          <span className='absolute left-5 text-[16px] z-50 text-white' onClick={()=>setRemoveKEY2(!removeKEY2)}> { removeKEY2 === true ? '>>':'<<'} </span>
+            {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
               return acc + result.props.children
             }, '').replaceAll('[object Object]').replaceAll('undefined')} />}
           </div>
@@ -239,12 +247,12 @@ function TemplateOne() {
 
 
           {userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images !== undefined &&
-            <div className='relative'>
+            <div className='relative '>
               <Slide transitionDuration={50} duration={50} scale={1} indicators={true} easing='cubic' autoplay={false}>
                 {
                   userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images.map((i, index) =>
-                    <div className="each-slide" key={index} >
-                      <img className='block relative w-screen  sm:h-screen object-contain cursor-zoom-in' src={i.url} onClick={() => redirect(i.url, true)} />
+                    <div className="each-slide " key={index} >
+                      <img className='block relative w-screen   sm:h-screen object-contain cursor-zoom-in' src={i.url} onClick={() => redirect(i.url, true)} />
                       {
                         userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
                           <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
@@ -273,7 +281,6 @@ function TemplateOne() {
               </div>
             </div>
           }
-          <br />
           {user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
             <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
           </div>}
@@ -301,7 +308,7 @@ function TemplateOne() {
         <h2 className={styles.title}>{description}</h2>
         <p className={styles.description}>{title}</p>
 
-     
+
         <SpeechToText setValue={setTextEditor} value={textEditor ? textEditor : 'nada'} />
         <br />
         <div className={styles.editor}  >
