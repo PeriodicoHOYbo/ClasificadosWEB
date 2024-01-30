@@ -175,7 +175,11 @@ function Home() {
             <Section topic="Citaciones" publicView={true} color=''></Section>
             <Section topic="Invitaciones" publicView={true} color=''></Section>
             <Section topic="Inmobiliria" publicView={true} color=''></Section>
+            <Section topic="Necrologicos" publicView={true} color=''></Section>
+            <Section topic="Compulsas" publicView={true} color=''></Section>
+            <Section topic="Convocatorias" publicView={true} color=''></Section>
             <Section topic="Servicios profesionales" publicView={true} color=''></Section>
+            <Section topic="Extravios" publicView={true} color=''></Section>
             <Section topic="Empleos" publicView={true} color=''></Section>
           </>}
 

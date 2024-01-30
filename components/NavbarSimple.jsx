@@ -75,18 +75,30 @@ export default function Navbar({ footer }) {
                 <Link href="/#Inmobiliria" legacyBehavior scroll={false}>
                     <a className={`uppercase ${style.link} ${pathname == "#Inmobiliria" ? style.active : ''}`} onClick={handlerClick}>Inmobiliria</a>
                 </Link>
+                <Link href="/#Necrologicos" legacyBehavior scroll={false}>
+                    <a className={`uppercase ${style.link} ${pathname == "#Necrologicos" ? style.active : ''}`} onClick={handlerClick}>Necrologicos</a>
+                </Link>
+               
+                <Link href="/#Compulsas" legacyBehavior scroll={false}>
+                    <a className={`uppercase ${style.link} ${pathname == "#Compulsas" ? style.active : ''}`} onClick={handlerClick}>Compulsas</a>
+                </Link>
+               
+                <Link href="/#Convocatorias" legacyBehavior scroll={false}>
+                    <a className={`uppercase ${style.link} ${pathname == "#Convocatorias" ? style.active : ''}`} onClick={handlerClick}>Convocatorias</a>
+                </Link>
+               
                 <Link href="/#Servicios profesionales" legacyBehavior scroll={false}>
                     <a className={`uppercase ${style.link} ${pathname == "#Servicios profesionales" ? style.active : ''}`} onClick={handlerClick}>Servicios profesionales</a>
                 </Link>
                 <Link href="/#Opinion" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Opinion" ? style.active : ''}`} onClick={handlerClick}>OPINIÓN</a>
+                    <a className={`uppercase ${style.link} ${pathname == "#Opinion" ? style.active : ''}`} onClick={handlerClick}>Extravios y otros</a>
                 </Link>
                
                 <Link href="/#Nosotros" legacyBehavior scroll={false}>
                     <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>NOSOTROS</a>
                 </Link>
-                <Link href="/" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>CLASIFICADOS</a>
+                <Link href="https://hoy.bo" legacyBehavior scroll={false}>
+                    <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>PORTADA</a>
                 </Link>
                 <Link href="/" legacyBehavior scroll={false}>
                     <a className={`uppercase absolute pt-[5px] top-0 bottom-0 my-auto  right-[0px] ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>
