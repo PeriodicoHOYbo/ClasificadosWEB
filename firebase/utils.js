@@ -4,7 +4,7 @@ import { onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWith
 import { getDatabase, ref, onValue, set, update, child, get, query, remove, startAfter, limitToFirst, limitToLast, orderByValue, startAt, orderByChild, endAt, endBefore } from "firebase/database";
 import { getList, getIndexStorage } from './storage'
 import { getDate, getDayMonthYear, getMonthAndYear } from '../utils/Utils'
-
+import { sectionsDB } from '../utils/SectionsDB'
 
 const auth = getAuth();
 const db = getDatabase(app);
@@ -82,7 +82,7 @@ let allData = {}
 
 
 async function getIndexData(setUserData, date, minDate, setUserSuccess) {
-  let arr = ['Inicio', 'Resoluciones', 'Comunicados', 'Edictos', 'Remates', 'Articulos', 'Citaciones', 'Invitaciones', 'Inmobiliria', 'Empleos', 'Servicios profesionales']
+  let arr = ['Inicio', ...sectionsDB.map(i=>i.title)]
   let arr2 = ['BannerIzquierdo1', 'BannerIzquierdo2', 'BannerIzquierdo3', 'BannerIzquierdo4', 'BannerPortada1', 'BannerPortada2', 'BannerPortada3', 'BannerDerecho1', 'BannerDerecho2', 'BannerDerecho3', 'BannerDerecho4', 'BannerPortada']
   let arr3 = ['BannerNotas1', 'BannerNotas2', 'BannerNotas3', 'BannerNotas4']
 

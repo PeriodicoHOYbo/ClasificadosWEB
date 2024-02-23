@@ -192,7 +192,6 @@ export default function Section({ topic, publicView, color }) {
                             </>
                         }
                     </span>
-
                     {
                         zoomIMG.whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${zoomIMG.whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
                             <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>

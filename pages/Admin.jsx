@@ -14,7 +14,7 @@ import Modal from '../components/Modal'
 
 import Section from '../components/Section'
 import Header from '../components/Header'
-
+import { sectionsDB } from '../utils/SectionsDB.js'
 import styles from '../styles/Home.module.css'
 import { handleSignOut, writeUserData } from '../firebase/utils'
 import { uploadIMG } from '../firebase/storage'
@@ -103,8 +103,9 @@ function Admin() {
           <span className='block w-full h-[3px] absolute bottom-[-7px] left-0 bg-[brown]'></span>
         </div>
         <Header></Header>
-        
-        <Section topic="Inicio" publicView={false} color='#8FC2C9'></Section>
+       { sectionsDB.map((i) => <Section topic={i.title} publicView={false} color='#8FC2C9'></Section>)}
+
+        {/* <Section topic="Inicio" publicView={false} color='#8FC2C9'></Section>
         <Section topic="Resoluciones" publicView={false} color='#c98f8f'></Section>
         <Section topic="Comunicados" publicView={false} color='#8FC2C9'></Section>
         <Section topic="Edictos" publicView={false} color='#c98f8f'></Section>
@@ -114,7 +115,7 @@ function Admin() {
         <Section topic="Invitaciones" publicView={false} color='#c98f8f'></Section>
         <Section topic="Inmobiliria" publicView={false} color='#8FC2C9'></Section>
         <Section topic="Servicios profesionales" publicView={false} color='#c98f8f'></Section>
-        <Section topic="Empleos" publicView={false} color='#8FC2C9'></Section>
+        <Section topic="Empleos" publicView={false} color='#8FC2C9'></Section> */}
         {userDB.users && userDB.users[user.uid] && userDB.users[user.uid].rol === 'admin' && <button className={styles.viewPeriodista} onClick={handlerViewPeriodista}>P</button>}
       </main>
 

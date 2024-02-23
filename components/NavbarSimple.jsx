@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useUser } from '../context/Context.js'
 import { useEffect, useState, useRef } from 'react'
-
+import { sectionsDB } from '../utils/SectionsDB.js'
 import style from '../styles/NavbarSimple.module.css'
 
 export default function Navbar({ footer }) {
@@ -51,60 +51,13 @@ export default function Navbar({ footer }) {
                         <span className=' h-[30px] rounded-full flex justify-center items-center bg-white rounded'><img src={'/inicio_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
                     </a>
                 </Link>
-                <Link href="/#Resoluciones" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>Resoluciones</a>
-                </Link>
-                <Link href="/#Comunicados" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Comunicados" ? style.active : ''}`} onClick={handlerClick}>Comunicados</a>
-                </Link>
-                <Link href="/#Edictos" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Edictos" ? style.active : ''}`} onClick={handlerClick}>Edictos</a>
-                </Link>
-                <Link href="/#Remates" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Remates" ? style.active : ''}`} onClick={handlerClick}>Remates</a>
-                </Link>
-                <Link href="/#Articulos" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Articulos" ? style.active : ''}`} onClick={handlerClick}>Articulos</a>
-                </Link>
-                <Link href="/#Citaciones" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Citaciones" ? style.active : ''}`} onClick={handlerClick}>Citaciones</a>
-                </Link>
-                <Link href="/#Invitaciones" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Invitaciones" ? style.active : ''}`} onClick={handlerClick}>Invitaciones</a>
-                </Link>
-                <Link href="/#Inmobiliria" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Inmobiliria" ? style.active : ''}`} onClick={handlerClick}>Inmobiliria</a>
-                </Link>
-                <Link href="/#Necrologicos" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Necrologicos" ? style.active : ''}`} onClick={handlerClick}>Necrologicos</a>
-                </Link>
-               
-                <Link href="/#Compulsas" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Compulsas" ? style.active : ''}`} onClick={handlerClick}>Compulsas</a>
-                </Link>
-               
-                <Link href="/#Convocatorias" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Convocatorias" ? style.active : ''}`} onClick={handlerClick}>Convocatorias</a>
-                </Link>
-               
-                <Link href="/#Servicios profesionales" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Servicios profesionales" ? style.active : ''}`} onClick={handlerClick}>Servicios profesionales</a>
-                </Link>
-                <Link href="/#Opinion" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Opinion" ? style.active : ''}`} onClick={handlerClick}>Extravios y otros</a>
-                </Link>
-               
-                <Link href="/#Nosotros" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>NOSOTROS</a>
-                </Link>
-                <Link href="https://hoy.bo" legacyBehavior scroll={false}>
-                    <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>PORTADA</a>
-                </Link>
-                <Link href="/" legacyBehavior scroll={false}>
-                    <a className={`uppercase absolute pt-[5px] top-0 bottom-0 my-auto  right-[0px] ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>
-                        <span className='  h-[30px] rounded-full flex justify-center items-center bg-white rounded my-auto '><img src={'/clasificados_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
-                    </a>
-                </Link>
+
+                {
+                    sectionsDB.map((i, index) => index !== 0 && <Link href={`#${i.hash}`} legacyBehavior scroll={false}>
+                        <a className={`uppercase ${style.link} ${pathname == `#${i.hash}` ? style.active : ''}`} onClick={handlerClick}>{i.title}</a>
+                    </Link>)
+                }
+
                 {/* <Link href="/" legacyBehavior scroll={false}>
                     <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>
                         <span className=' w-[40px] h-[40px] rounded-full flex justify-center items-center bg-white rounded my-auto '><img src={'/clasificados_v2.jpeg'} className="block h-[40px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
@@ -142,3 +95,60 @@ export default function Navbar({ footer }) {
 
     )
 }
+
+
+
+// <Link href="/#Resoluciones" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>Resoluciones</a>
+// </Link>
+// <Link href="/#Comunicados" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Comunicados" ? style.active : ''}`} onClick={handlerClick}>Comunicados</a>
+// </Link>
+// <Link href="/#Edictos" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Edictos" ? style.active : ''}`} onClick={handlerClick}>Edictos</a>
+// </Link>
+// <Link href="/#Remates" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Remates" ? style.active : ''}`} onClick={handlerClick}>Remates</a>
+// </Link>
+// <Link href="/#Articulos" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Articulos" ? style.active : ''}`} onClick={handlerClick}>Articulos</a>
+// </Link>
+// <Link href="/#Citaciones" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Citaciones" ? style.active : ''}`} onClick={handlerClick}>Citaciones</a>
+// </Link>
+// <Link href="/#Invitaciones" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Invitaciones" ? style.active : ''}`} onClick={handlerClick}>Invitaciones</a>
+// </Link>
+// <Link href="/#Inmobiliria" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Inmobiliria" ? style.active : ''}`} onClick={handlerClick}>Inmobiliria</a>
+// </Link>
+// <Link href="/#Necrologicos" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Necrologicos" ? style.active : ''}`} onClick={handlerClick}>Necrologicos</a>
+// </Link>
+
+// <Link href="/#Compulsas" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Compulsas" ? style.active : ''}`} onClick={handlerClick}>Compulsas</a>
+// </Link>
+
+// <Link href="/#Convocatorias" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Convocatorias" ? style.active : ''}`} onClick={handlerClick}>Convocatorias</a>
+// </Link>
+
+// <Link href="/#Servicios profesionales" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Servicios profesionales" ? style.active : ''}`} onClick={handlerClick}>Servicios profesionales</a>
+// </Link>
+// <Link href="/#Opinion" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Opinion" ? style.active : ''}`} onClick={handlerClick}>Extravios y otros</a>
+// </Link>
+
+// <Link href="/#Nosotros" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>NOSOTROS</a>
+// </Link>
+// <Link href="https://hoy.bo" legacyBehavior scroll={false}>
+// <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} onClick={handleClick}>PORTADA</a>
+// </Link>
+// <Link href="/" legacyBehavior scroll={false}>
+// <a className={`uppercase absolute pt-[5px] top-0 bottom-0 my-auto  right-[0px] ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>
+//     <span className='  h-[30px] rounded-full flex justify-center items-center bg-white rounded my-auto '><img src={'/clasificados_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
+// </a>
+// </Link>

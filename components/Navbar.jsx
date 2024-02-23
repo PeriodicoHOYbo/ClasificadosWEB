@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useUser } from '../context/Context.js'
-
+import { sectionsDB } from '../utils/SectionsDB.js'
 import style from '../styles/Navbar.module.css'
 
 export default function Navbar() {
@@ -59,6 +59,39 @@ export default function Navbar() {
                             <span className=' h-[30px] rounded-full flex justify-center items-center bg-white rounded'><img src={'/inicio_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
                         </a>
                     </Link>
+
+                    {
+                        sectionsDB.map((i, index)=> index !== 0 && <Link href={`#${i.hash}`} legacyBehavior scroll={false}>
+                            <a className={`uppercase ${style.link} ${pathname == `#${i.hash}` ? style.active : ''}`} onClick={handlerClick}>{i.title}</a>
+                        </Link>)
+                    }
+
+
+
+
+
+                    <Link href="/" legacyBehavior scroll={false}>
+                        <a className={`uppercase absolute pt-[5px] top-0 bottom-0 my-auto  right-[0px] ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>
+                            <span className='  h-[30px] rounded-full flex justify-center items-center bg-white rounded my-auto '><img src={'/clasificados_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
+                        </a>
+                    </Link>
+                </nav>
+            </div>
+        </>
+    )
+}
+
+
+
+
+
+
+
+
+
+                    {/* 
+
+
                     <Link href="#Resoluciones" legacyBehavior scroll={false}>
                         <a className={`uppercase ${style.link} ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>Resoluciones</a>
                     </Link>
@@ -98,14 +131,4 @@ export default function Navbar() {
                     </Link>
                     <Link href="/" legacyBehavior scroll={false}>
                         <a className={`uppercase ${style.link} ${pathname == "#Nosotros" ? style.active : ''}`} >CLASIFICADOS</a>
-                    </Link>
-                    <Link href="/" legacyBehavior scroll={false}>
-                        <a className={`uppercase absolute pt-[5px] top-0 bottom-0 my-auto  right-[0px] ${pathname == "#Resoluciones" ? style.active : ''}`} onClick={handlerClick}>
-                            <span className='  h-[30px] rounded-full flex justify-center items-center bg-white rounded my-auto '><img src={'/clasificados_v2.jpeg'} className="block h-[30px] rounded-full cursor-pointer" onClick={() => router.push('/')} alt="" /></span>
-                        </a>
-                    </Link>
-                </nav>
-            </div>
-        </>
-    )
-}
+                    </Link> */}

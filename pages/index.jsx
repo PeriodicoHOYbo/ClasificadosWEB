@@ -11,7 +11,7 @@ import Layout from '../layout/Layout'
 import Section from '../components/Section'
 import Date from '../components/Date'
 import Header from '../components/Header'
-
+import { sectionsDB } from '../utils/SectionsDB'
 import styles from '../styles/Home.module.css'
 import { handleSignOut } from '../firebase/utils'
 import { uploadIMG } from '../firebase/storage'
@@ -165,24 +165,8 @@ function Home() {
 
             </div>}
 
-          {showImg == false && showVideo == false && <>
-            <Section topic="Inicio" publicView={true} color=''></Section>
-            <Section topic="Resoluciones" publicView={true} color=''></Section>
-            <Section topic="Comunicados" publicView={true} color=''></Section>
-            <Section topic="Edictos" publicView={true} color=''></Section>
-            <Section topic="Remates" publicView={true} color=''></Section>
-            <Section topic="Articulos" publicView={true} color=''></Section>
-            <Section topic="Citaciones" publicView={true} color=''></Section>
-            <Section topic="Invitaciones" publicView={true} color=''></Section>
-            <Section topic="Inmobiliria" publicView={true} color=''></Section>
-            <Section topic="Necrologicos" publicView={true} color=''></Section>
-            <Section topic="Compulsas" publicView={true} color=''></Section>
-            <Section topic="Convocatorias" publicView={true} color=''></Section>
-            <Section topic="Servicios profesionales" publicView={true} color=''></Section>
-            <Section topic="Extravios" publicView={true} color=''></Section>
-            <Section topic="Empleos" publicView={true} color=''></Section>
-          </>}
-
+          {showImg == false && showVideo == false && sectionsDB.map((i) => <Section topic={i.title} publicView={true} color=''></Section>)}
+          {/* <Section topic={i.title} publicView={true} color=''></Section> */}
 
         </div>
 

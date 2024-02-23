@@ -1,8 +1,8 @@
-import { writeUserData, getData } from '../firebase/utils'
+import { writeUserData, getData, removeData} from '../firebase/utils'
 import { uploadIMG } from '../firebase/storage'
 import { useUser } from '../context/Context.js'
 import Button from '../components/Button'
-import Error from '../components/Error'
+import Success from '../components/Success'
 import style from '../styles/Form.module.css'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
@@ -55,9 +55,14 @@ function Form({ topic, value, color }) {
     function redirect(data) {
         router.push(`/FlipBook?edicion=${data}`)
     }
-
+    function handlerPeriodicoDigital(e, route) {
+        e.stopPropagation()
+        console.log(route)
+        removeData(`EdicionDigital/${route}`, setUserData, setUserSuccess)
+    }
     const bytesToMegaBytes = bytes => bytes / (1024 * 1024)
     function save(e) {
+        setUserSuccess('save')
         e.preventDefault()
         const newDate = new Date()
 
@@ -85,7 +90,7 @@ function Form({ topic, value, color }) {
         // }
     }
 
-    console.log(userDB.EdicionDigital)
+    console.log(user)
     return (
         <Layout>
 
@@ -128,7 +133,7 @@ function Form({ topic, value, color }) {
                                                 {bytesToMegaBytes(i.size).toFixed(2)} MB
                                             </p>
                                         </div>
-                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 ">
                                             <svg className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48" onClick={() => handlerItem(index)}>
                                                 <path fill="#f44336" d="M44,24c0,11-9,20-20,20S4,35,4,24S13,4,24,4S44,13,44,24z"></path><line x1="16.9" x2="31.1" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line><line x1="31.1" x2="16.9" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line>
                                             </svg>
@@ -143,10 +148,10 @@ function Form({ topic, value, color }) {
                         <h3 className='text-center'>Edición digital</h3>
                         <br />
                         <div className="divide-y divide-gray-200 flex flex-wrap ">
-                            {userDB.EdicionDigital !== undefined && Object.entries(userDB.EdicionDigital).map((i, index) => {
+                            {userDB.EdicionDigital !== undefined && Object.entries(userDB.EdicionDigital).reverse().map((i, index) => {
 
                                 return <div className="flex flex-col pb-3 sm:pb-4 p-5" key={index} onClick={() => redirect(i[0])}>
-                                    <div className="flex flex-col items-center p-5 shadow-2xl rounded-[10px] hover:scale-125 transition-all">
+                                    <div className="relative flex flex-col items-center p-5 shadow-2xl rounded-[10px] hover:scale-125 transition-all">
                                         {console.log(Object.values(i[1])[0].url)}
                                         <div className="flex-shrink-0">
                                             <img className="w-[100px] h-[150px] rounded-[5px]" src={Object.values(i[1])[0].url} alt="Neil image" />
@@ -155,6 +160,11 @@ function Form({ topic, value, color }) {
                                             {i[0]}
                                         </p>
 
+                                        {user && user !== undefined && <div className="inline-flex items-center text-base font-semibold text-gray-900 absolute top-[-10px] right-[-10px]">
+                                            <svg className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48" onClick={(e) => handlerPeriodicoDigital(e, i[0])}>
+                                                <path fill="#f44336" d="M44,24c0,11-9,20-20,20S4,35,4,24S13,4,24,4S44,13,44,24z"></path><line x1="16.9" x2="31.1" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line><line x1="31.1" x2="16.9" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line>
+                                            </svg>
+                                        </div>}
                                     </div>
                                 </div>
                             })}
@@ -163,6 +173,8 @@ function Form({ topic, value, color }) {
 
                 </div>
             </div>
+            {success == "save" && <Success>Cargando...</Success>}
+
         </Layout>
     )
 }

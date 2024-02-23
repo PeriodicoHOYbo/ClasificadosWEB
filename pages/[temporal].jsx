@@ -1,7 +1,7 @@
 
 
 
-
+import { sectionsDB } from '../utils/SectionsDB.js'
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -105,7 +105,49 @@ function TemplateOne() {
     ruta != '#' ? window.open(ruta, self ? '_self' : '_blank') : ''
   }
 
+
+
+
+  
   function validate() {
+
+
+    switch (router.query.temporal.slice(0, 2)) {
+      case '11':
+        return sectionsDB[0].title
+        break;
+      case '12':
+        return sectionsDB[1].title
+        break;
+      case '13':
+        return sectionsDB[2].title
+        break;
+      case '14':
+        return sectionsDB[3].title
+        break;
+      case '15':
+        return sectionsDB[4].title
+        break;
+      case '16':
+        return sectionsDB[5].title
+      case '17':
+        return sectionsDB[6].title
+        break;
+      case '18':
+        return sectionsDB[7].title
+        break;
+      case '19':
+        return sectionsDB[8].title
+        break;
+      case '20':
+        return sectionsDB[9].title
+        break;
+      default:
+        return setUserSuccess(false)
+    }
+
+    return
+
 
     switch (router.query.temporal.slice(0, 2)) {
       case '11':

@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { getDate, getDayMonthYear, getMonthAndYear } from '../utils/Utils'
 import FormAddsC from './FormAddsC'
 import Tag from '../components/Tag'
-
+import {sectionsDB} from '../utils/SectionsDB'
 export default function Form({ topic, value, color }) {
   const { user, userDB, setUserData, setUserSuccess, success, postsIMG, setUserPostsIMG, monthAndYear, dayMonthYear, viewPeriodista } = useUser()
 
@@ -78,40 +78,34 @@ export default function Form({ topic, value, color }) {
     e.preventDefault()
 
     switch (topic) {
-      case "Inicio":
+      case sectionsDB[0].title:
         return save(11)
         break;
-      case "Resoluciones":
+      case sectionsDB[1].title:
         return save(12)
         break;
-      case "Comunicados":
+      case sectionsDB[2].title:
         return save(13)
         break;
-      case "Edictos":
+      case sectionsDB[3].title:
         return save(14)
         break;
-      case "Remates":
+      case sectionsDB[4].title:
         return save(15)
         break;
-      case "Articulos":
+      case sectionsDB[5].title:
         return save(16)
-      case "Citaciones":
+      case sectionsDB[6].title:
         return save(17)
         break;
-      case "Invitaciones":
+      case sectionsDB[7].title:
         return save(18)
         break;
-      case "Inmobiliria":
+      case sectionsDB[8].title:
         return save(19)
         break;
-      case "Servicios profesionales":
+      case sectionsDB[9].title:
         return save(20)
-        break;
-      case "Citaciones":
-        return save(21)
-        break;
-      case "Empleos":
-        return save(22)
         break;
       default:
         return setUserSuccess(false)
