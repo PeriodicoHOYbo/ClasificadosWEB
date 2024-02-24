@@ -108,7 +108,7 @@ function TemplateOne() {
 
 
 
-  
+
   function validate() {
 
 
@@ -272,26 +272,31 @@ function TemplateOne() {
       {
         formViewer === true && <div className={`relative h-screen bg-black ${styles.viewer}`}>
           {/* <h2 className={`p-5 sm:w-[50vw] absolute left-0 right-0 mx-auto ${styles.title} text-center bg-white rounded-[20px] shadow-2xl z-50`}>{description}</h2> */}
-          <h2
-            className={`p-5 pr-[50px] sm:w-[50vw] fixed top-[70px] left-0 text-black text-[20px] sm:text-[40px]  overflow-hidden m-0 text-center  rounded-[20px] shadow-2xl z-50 transition-all ${styles.title} ${removeKEY1 === false && styles.titleKEY}`}>
-            {description}
-            <span className='absolute right-[10px] font-extrabold text-black text-[16px]  h-[30px] w-[30px] rounded-full' onClick={() => setRemoveKEY1(!removeKEY1)}> {removeKEY1 === true ? '<<' : '>>'} </span>
-          </h2>
 
+          {
+            description && description !== undefined &&
+            <h2
+              className={`p-5 pr-[50px] sm:w-[50vw] fixed top-[70px] left-0 text-black text-[20px] sm:text-[40px]  overflow-hidden m-0 text-center  rounded-[20px] shadow-2xl z-50 transition-all ${styles.title} ${removeKEY1 === false && styles.titleKEY}`}>
+              {description}
+              <span className='absolute right-[10px] font-extrabold text-black text-[16px]  h-[30px] w-[30px] rounded-full' onClick={() => setRemoveKEY1(!removeKEY1)}> {removeKEY1 === true ? '<<' : '>>'} </span>
+            </h2>
+          }
 
-          <div className={`${removeKEY2 === false && styles.containerButtonsPlayer} fixed w-full transition-all right-0 flex sm:w-[50vw] justify-center sm:justify-start  z-50`}>
-            <div className='relative inline  '>
-              <span className='absolute top-0 bottom-0 my-auto font-bold left-2 text-[20px] z-50 text-white' onClick={() => setRemoveKEY2(!removeKEY2)}> {removeKEY2 === true ? '>>' : '<<'} </span>
-              {specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
-                return acc + result.props.children
-              }, '').replaceAll('[object Object]').replaceAll('undefined')} />}
+          {
+                 specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' && <div className={`${removeKEY2 === false && styles.containerButtonsPlayer} fixed w-full transition-all right-0 flex sm:w-[50vw] justify-center sm:justify-start  z-50`}>
+              <div className='relative inline  '>
+                <span className='absolute top-0 bottom-0 my-auto font-bold left-2 text-[20px] z-50 text-white' onClick={() => setRemoveKEY2(!removeKEY2)}> {removeKEY2 === true ? '>>' : '<<'} </span>
+                {
+                  specificData && router.query && specificData[`PostImage_${router.query.temporal}`] && specificData[`PostImage_${router.query.temporal}`].nota !== '' && specificData[`PostImage_${router.query.temporal}`].nota && specificData[`PostImage_${router.query.temporal}`].nota !== undefined && specificData[`PostImage_${router.query.temporal}`].nota !== 'en redaccion' && <SpeechSynthesis text={parse(textEditor) !== 'En redacción ' && Array.isArray(parse(textEditor)) && parse(textEditor).reduce((acc, result) => {
+                    return acc + result.props.children
+                  }, '').replaceAll('[object Object]').replaceAll('undefined')} />
+                }
+              </div>
             </div>
+          }
 
-          </div>
-
-
-
-          {userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images !== undefined &&
+          {
+            userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].images !== undefined &&
             <div className='relative '>
               <Slide transitionDuration={50} duration={50} scale={1} indicators={true} easing='cubic' autoplay={false}>
                 {
@@ -300,7 +305,7 @@ function TemplateOne() {
                       <img className='block relative w-screen    h-screen object-contain cursor-zoom-in' src={i.url} onClick={() => redirect(i.url, true)} />
                       {
                         userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp !== '' && <Link href={`https://api.whatsapp.com/send?phone=${userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].whatsapp}&text=Hola%20vi%20su%20anuncion%20en%20el%20PERIODICO%20HOY%20`} legacyBehavior>
-                          <a target="_blank"><img className={styles.sliderWhatsapp} src={`/SocialMedia/whatsapp.svg`} /></a>
+                          <a  className='fixed bottom-[30px] right-[30px] text-white font-semibold bg-[#00000093] inline-block px-5 py-2 border-white border-[1px]' target="_blank"> Contactar <img className='ml-5 h-[30px] w-[30px]' src={`/SocialMedia/whatsapp.svg`} /></a>
                         </Link>
                       }
                     </div>
@@ -309,9 +314,8 @@ function TemplateOne() {
             </div>
           }
 
-
-
-          {userDB && userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].state == 'Publicado' || user &&
+          {/* {
+            userDB && userDB[validate()] && userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].state == 'Publicado' || user &&
             <div className={`${styles.qlEditor} `} styles={{ padding: '0', height: '50%' }} >
               <div className={styles.redactorData}>
                 <div className={styles.perfil}>
@@ -325,24 +329,25 @@ function TemplateOne() {
                   {new Date(userDB[validate()].Posts[`PostImage_${router.query.temporal.slice(2)}`].fecha).getFullYear()}</span>
               </div>
             </div>
-          }
-          <div className='fixed bottom-[50px] left-0 right-0 mx-auto flex w-[50vw] justify-between'>
-            <img src="/velas.gif" className='w-[50px]' alt="" />
-            <img src="/velas.gif" className='w-[50px]' alt="" />
-          </div>
+          } */}
 
-          {user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
-            <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
-          </div>}
+          {
+            router.query.temporal.slice(0, 2) == '13' &&
+            <div className='fixed bottom-[50px] left-0 right-0 mx-auto flex w-[50vw] justify-between'>
+              <img src="/velas.gif" className='w-[50px]' alt="" />
+              <img src="/velas.gif" className='w-[50px]' alt="" />
+            </div>
+          }
+
+          {
+            user && formViewer === true && <div className='w-[90%] max-w-[350px] relative left-0 right-0 bottom-[20px] mx-auto z--50'>
+              <Button style="miniButtonPrimary" click={formViewerHandler}>Editar nota</Button>
+            </div>
+          }
         </div>
       }
 
-
-
-
-
       {/* editor */}
-
 
       {user && formViewer === false && <div className={`p-5 min-h-screen bg-slate-100 ${styles.viewer}`}>
         <div className='flex w-full'>
