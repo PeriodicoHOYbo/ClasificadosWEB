@@ -25,7 +25,7 @@ async function uploadIMG(ruteDB, ruteSTG, fileName, file, setUserSuccess, monthA
 
     if (multiple == true) {
 
-        file.map(f, index => {
+        file.map((f, index) => {
             uploadBytes(ref(storage, `/${ruteSTG}/${index}`), f).then(async (snapshot) => {
                 getDownloadURL(ref(storage, snapshot.metadata.fullPath))
                     .then((url) => {
