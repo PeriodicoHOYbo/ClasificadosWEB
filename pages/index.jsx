@@ -165,7 +165,7 @@ function Home() {
 
             </div>}
 
-          {showImg == false && showVideo == false && sectionsDB.map((i) => <Section topic={i.title} publicView={true} color=''></Section>)}
+          {showImg == false && showVideo == false && sectionsDB.map((i, index) => <Section topic={i.title} publicView={true} color='' key={index}></Section>)}
           {/* <Section topic={i.title} publicView={true} color=''></Section> */}
 
         </div>
