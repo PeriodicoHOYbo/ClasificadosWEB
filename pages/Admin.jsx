@@ -103,7 +103,7 @@ function Admin() {
           <span className='block w-full h-[3px] absolute bottom-[-7px] left-0 bg-[brown]'></span>
         </div>
         <Header></Header>
-       { sectionsDB.map((i) => <Section topic={i.title} publicView={false} color='#8FC2C9'></Section>)}
+       { sectionsDB.map((i, index) => <Section topic={i.title} publicView={false} color='#8FC2C9' key={index}></Section>)}
 
         {/* <Section topic="Inicio" publicView={false} color='#8FC2C9'></Section>
         <Section topic="Resoluciones" publicView={false} color='#c98f8f'></Section>
